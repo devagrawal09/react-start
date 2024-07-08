@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "bundler",
@@ -8,7 +7,7 @@
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "composite": true,
-    "strict": true,
+    "strict": false,
     "downlevelIteration": true,
     "skipLibCheck": true,
     "jsx": "react-jsx",
@@ -16,7 +15,8 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "types": [
-      "bun-types" // add Bun global
+      "bun-types", // add Bun global
+      "vinxi/client"
     ]
   }
 }
