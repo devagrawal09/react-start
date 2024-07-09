@@ -47,12 +47,28 @@ export class PagesRouter extends BaseFileSystemRouter {
 export default createApp({
   routers: [
     {
-      type: "spa",
+      type: "client",
       name: "client",
-      handler: "./index.html",
+      handler: "./src/client.tsx",
       target: "browser",
       plugins: () => [serverFunctions.client(), reactRefresh()],
-      base: "/",
+      routes: (router, app) =>
+        new PagesRouter(
+          {
+            dir: resolve.absolute("./src/pages", router.root),
+            extensions: ["js", "jsx", "ts", "tsx"],
+          },
+          router,
+          app
+        ),
+      base: "/_build",
+    },
+    {
+      type: "http",
+      name: "ssr",
+      handler: "./src/server.tsx",
+      target: "server",
+      plugins: () => [reactRefresh()],
       routes: (router, app) =>
         new PagesRouter(
           {

@@ -1,6 +1,9 @@
 "use server";
 
-import type { Todo } from "./app";
+export interface Todo {
+  text: string;
+  completed: boolean;
+}
 
 const todos: Todo[] = [
   {

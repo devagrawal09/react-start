@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-import { getTodos } from "../actions";
-
-export interface Todo {
-  text: string;
-  completed: boolean;
-}
+import { getTodos, type Todo } from "../actions";
 
 export default function () {
   const [todos, setTodos] = useState<Todo[]>([]);
